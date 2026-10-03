@@ -1,0 +1,73 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Conectar ao Clue",
+        "description": "Entre com sua conta do Clue. Se sua parceira compartilha o ciclo com você pelo Clue Connect, use sua própria conta: o calendário dela aparece no próximo passo.",
+        "data": {
+          "email": "E-mail",
+          "password": "Senha"
+        }
+      },
+      "source": {
+        "title": "Escolha um calendário",
+        "description": "Esta conta lê mais de um calendário de ciclo. Escolha qual acompanhar; adicione a integração de novo para acompanhar outro.",
+        "data": {
+          "connection_code": "Calendário"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Reautenticar Clue",
+        "description": "O Clue recusou a senha salva de {email}. Digite a senha atual.",
+        "data": {
+          "password": "Senha"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "E-mail ou senha inválidos.",
+      "cannot_connect": "Não foi possível acessar o Clue. Tente mais tarde.",
+      "unknown": "Erro inesperado."
+    },
+    "abort": {
+      "already_configured": "Este calendário já está configurado.",
+      "no_data": "Esta conta não tem dados de ciclo nem calendário ativo no Clue Connect.",
+      "reauth_successful": "Reautenticação concluída.",
+      "wrong_account": "As credenciais são de outra conta do Clue."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "cycle_day": { "name": "Dia do ciclo" },
+      "phase": {
+        "name": "Fase",
+        "state": {
+          "period": "Menstruação",
+          "fertile": "Fértil",
+          "ovulation": "Ovulação",
+          "pms": "TPM",
+          "follicular": "Folicular",
+          "luteal": "Lútea",
+          "unknown": "Desconhecida"
+        }
+      },
+      "next_period": { "name": "Próxima menstruação" },
+      "days_until_next_period": { "name": "Dias até a próxima menstruação" },
+      "last_period_start": { "name": "Início da última menstruação" },
+      "last_period_length": { "name": "Duração da última menstruação" },
+      "next_ovulation": { "name": "Próxima ovulação" }
+    },
+    "binary_sensor": {
+      "period": { "name": "Menstruação" },
+      "fertile_window": {
+        "name": "Janela fértil",
+        "state_attributes": {
+          "window_start": { "name": "Início da janela" },
+          "window_end": { "name": "Fim da janela" }
+        }
+      },
+      "ovulation_day": { "name": "Dia de ovulação" },
+      "awaiting_period_confirmation": { "name": "Aguardando confirmação da menstruação" }
+    }
+  }
+}

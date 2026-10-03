@@ -1,0 +1,73 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to Clue",
+        "description": "Sign in with your Clue account. If your partner shares their cycle with you through Clue Connect, use your own account: you can pick their calendar next.",
+        "data": {
+          "email": "Email",
+          "password": "Password"
+        }
+      },
+      "source": {
+        "title": "Choose a calendar",
+        "description": "This account can read more than one cycle calendar. Pick the one to track; add the integration again to track another.",
+        "data": {
+          "connection_code": "Calendar"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Reauthenticate Clue",
+        "description": "Clue rejected the stored password for {email}. Enter the current one.",
+        "data": {
+          "password": "Password"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Invalid email or password.",
+      "cannot_connect": "Could not reach Clue. Try again later.",
+      "unknown": "Unexpected error."
+    },
+    "abort": {
+      "already_configured": "This calendar is already configured.",
+      "no_data": "This account has no cycle data and no active Clue Connect calendar.",
+      "reauth_successful": "Reauthentication successful.",
+      "wrong_account": "The credentials belong to a different Clue account."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "cycle_day": { "name": "Cycle day" },
+      "phase": {
+        "name": "Phase",
+        "state": {
+          "period": "Period",
+          "fertile": "Fertile",
+          "ovulation": "Ovulation",
+          "pms": "PMS",
+          "follicular": "Follicular",
+          "luteal": "Luteal",
+          "unknown": "Unknown"
+        }
+      },
+      "next_period": { "name": "Next period" },
+      "days_until_next_period": { "name": "Days until next period" },
+      "last_period_start": { "name": "Last period start" },
+      "last_period_length": { "name": "Last period length" },
+      "next_ovulation": { "name": "Next ovulation" }
+    },
+    "binary_sensor": {
+      "period": { "name": "Period" },
+      "fertile_window": {
+        "name": "Fertile window",
+        "state_attributes": {
+          "window_start": { "name": "Window start" },
+          "window_end": { "name": "Window end" }
+        }
+      },
+      "ovulation_day": { "name": "Ovulation day" },
+      "awaiting_period_confirmation": { "name": "Awaiting period confirmation" }
+    }
+  }
+}
