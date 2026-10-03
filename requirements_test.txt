@@ -1,0 +1,3 @@
+# Matches Home Assistant 2026.9.2. Bump together with the "homeassistant"
+# minimum in hacs.json when targeting a newer release.
+pytest-homeassistant-custom-component==0.13.365
