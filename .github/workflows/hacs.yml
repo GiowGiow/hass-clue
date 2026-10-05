@@ -1,9 +1,11 @@
 name: Validate with HACS
 
-# Manual only while the repository is private: HACS reads public GitHub data
-# and cannot validate a private repository. Add push/pull_request triggers
-# once the repository goes public.
 on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "0 6 * * 1"
   workflow_dispatch:
 
 jobs:

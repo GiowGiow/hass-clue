@@ -8,19 +8,27 @@ Clue Connect.
 Clue publishes no API. This integration relies on
 [pyclue](https://github.com/GiowGiow/pyclue), a client built against the
 endpoints the Clue app uses, which may change without notice. Not affiliated
-with or endorsed by Clue / BioWink GmbH.
+with or endorsed by Clue or BioWink GmbH. Clue is a trademark of its owner.
 
 ## Installation
 
-The repository is private for now, and HACS cannot install private
-repositories. Install by hand:
+### HACS
+
+[![Open your Home Assistant instance and open this repository in HACS.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=GiowGiow&repository=hass-clue&category=integration)
+
+Or add it by hand:
+
+1. In HACS, open the menu → **Custom repositories**, and add
+   `https://github.com/GiowGiow/hass-clue` with type **Integration**.
+2. Search for **Clue** in HACS and download it.
+3. Restart Home Assistant.
+4. Go to **Settings → Devices & services → Add integration → Clue**.
+
+### Manual
 
 1. Copy `custom_components/clue/` into your Home Assistant `config/custom_components/`.
 2. Restart Home Assistant.
 3. Go to **Settings → Devices & services → Add integration → Clue**.
-
-Once the repository is public, it can be added to HACS as a custom repository
-(category *Integration*).
 
 ## Configuration
 
@@ -82,8 +90,9 @@ Cycle data is intimate health data, often someone else's.
 
 ## Development
 
-The pyclue library is **vendored** in `custom_components/clue/pyclue/`,
-because Home Assistant cannot pip-install it from a private repository.
+The pyclue library is **vendored** in `custom_components/clue/pyclue/`. It is
+not on PyPI, where the name `pyclue` belongs to an unrelated project, so the
+integration ships a pinned copy and HACS installs both together.
 `custom_components/clue/pyclue/VENDORED` records the tag and commit. To move
 to a new release:
 
@@ -103,15 +112,10 @@ uv pip install --python .venv/bin/python -r requirements_test.txt
 .venv/bin/pytest
 ```
 
-### Moving to PyPI
+### Releases
 
-When the repositories go public:
-
-1. Publish `pyclue` to PyPI.
-2. Set `"requirements": ["pyclue==X.Y.Z"]` in `manifest.json`.
-3. Delete `custom_components/clue/pyclue/` and `scripts/sync_pyclue.sh`.
-4. Replace `from .pyclue import` with `from pyclue import`.
-5. Enable the push triggers in `.github/workflows/hacs.yml`.
+HACS offers the GitHub releases as versions. Tag `vX.Y.Z` to match
+`"version"` in `manifest.json`, then publish a release from the tag.
 
 ## License
 
